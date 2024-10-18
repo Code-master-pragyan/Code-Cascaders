@@ -24,7 +24,7 @@
     }
 
     .navbar {
-        background-color:#574e4e;
+        background-color: #574e4e;
         padding: 1rem 0;
         color: #fff;
         box-shadow: #333;
@@ -35,8 +35,22 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        
+
     }
+
+    .sticky {
+        position: sticky;
+        top: 0px;
+        width: 100%;
+        z-index: 1000;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    body {
+        padding-top: 70px;
+        /* Adjust depending on your navbar height */
+    }
+
 
     .logo {
         font-size: 1.5rem;
@@ -50,8 +64,10 @@
         list-style: none;
         display: flex;
         gap: 5.5rem;
+
     }
-    .nav-links a:hover{
+
+    .nav-links a:hover {
         background-color: #ffffff41;
     }
 
@@ -59,6 +75,7 @@
         color: #fff;
         text-decoration: none;
         font-weight: 500;
+
     }
 
     .btn {
@@ -74,17 +91,20 @@
         color: #fff;
         border: solid black;
         border-radius: 17px;
-        margin-right: 40px
-        text-decoration:none;
+        margin-right: 40px;
+        text-decoration: none;
+
     }
-    .primary:hover{
+
+    .primary:hover {
         background-color: #f26343c2;
+    }
 
     .secondary {
         background-color: #fff;
         color: #ff6347;
         border: 1px solid #ff6347;
-        text-decoration:none;
+        text-decoration: none;
     }
 
     .secondary:hover {
@@ -105,6 +125,7 @@
         text-align: center;
         max-width: 600px;
         margin: 0 auto;
+        color: #333;
     }
 
     .hero h1 {
@@ -162,26 +183,27 @@
         <div class="container">
             <a href="#" class="logo">SLIET Mentorship</a>
             <ul class="nav-links">
-                <li><a href="\">Home</a></li>
-                <li><a href="about us.html">About Us</a></li>
-                <li><a href="mentors.html">Mentors</a></li>
-                <li><a href="">Contact</a></li>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
+
             <a href="login.html" class="btn primary">login Now</a>
         </div>
     </nav>
 
-    <section class="hero">
+    <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
                 <h1>Unlock Your Potential</h1>
                 <p>Find a mentor who can guide you to success in your career and personal growth.</p>
-                <a href="#" class="btn secondary">Get Started</a>
+                <a href="mentors.html" class="btn secondary">Get Started</a>
             </div>
         </div>
     </section>
 
-    
+
+
     <section class="features">
         <div class="container">
             <h2>Why Choose Us?</h2>
@@ -205,10 +227,52 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Mentorship Platform|All rights reserved</p>
+            <p>&copy; 2024 Mentorship Platform | All rights reserved</p>
         </div>
     </footer>
+    <script>
+        // Wait until the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', () => {
 
+            // Smooth scrolling for navigation links
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    // Get the target section ID
+                    const targetId = link.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        event.preventDefault();
+                        // Scroll smoothly to the target section
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 50, // Adjust the offset as per your navbar height
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Sticky navbar functionality
+            const navbar = document.querySelector('.navbar');
+            const sticky = navbar.offsetTop;
+
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > sticky) {
+                    navbar.classList.add('sticky');
+                } else {
+                    navbar.classList.remove('sticky');
+                }
+            });
+
+            // Show a message when the 'Get Started' button is clicked
+            const getStartedButton = document.querySelector('.hero .btn.secondary');
+            getStartedButton.addEventListener('click', () => {
+                alert('Thank you for your interest! We will guide you to the mentorship journey.');
+            });
+        });
+
+
+    </script>
 </body>
 
 </html>
