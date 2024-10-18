@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,78 +11,116 @@
 </head>
 <style>
     * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    line-height: 1.6;
-}
-
-/* Container */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-}
-
-/* About Section */
-.about {
-    background-color: #fff;
-    padding: 4rem 0;
-    text-align: center;
-}
-
-.about-content {
-    margin-bottom: 3rem;
-}
-
-.about h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-    font-weight: 700;
-}
-
-.about p {
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-    line-height: 1.8;
-}
-
-.milestones {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 4rem;
-}
-
-.milestone-item {
-    text-align: center;
-}
-
-.milestone-item h3 {
-    font-size: 2rem;
-    color: #ff6347;
-    margin-bottom: 0.5rem;
-}
-
-.milestone-item p {
-    font-size: 1.2rem;
-    color: #333;
-}
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        line-height: 1.6;
+        scroll-behavior: smooth;
+        transition: background-color 0.5s ease-in-out;
+    }
 
 
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
 
+
+    .about {
+        background-color: #fff;
+        padding: 4rem 0;
+        text-align: center;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 1s forwards;
+    }
+
+    .about-content {
+        margin-bottom: 3rem;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 1.5s forwards;
+        animation-delay: 0.5s;
+    }
+
+    .about h2 {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+        font-weight: 700;
+        color: #574e4e;
+    }
+
+    .about p {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.8;
+        color: #555;
+    }
+
+    .milestones {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 4rem;
+    }
+    
+
+    .milestone-item {
+        text-align: center;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 2s forwards;
+        animation-delay: 1s;
+    }
+
+    .milestone-item h3 {
+        font-size: 3rem;
+        color: #ff6347;
+        margin-bottom: 0.5rem;
+        transition: transform 0.3s ease;
+    }
+
+    .milestone-item p {
+        font-size: 1.2rem;
+        color: #333;
+        transition: transform 0.3s ease;
+    }
+
+
+    .milestone-item:hover h3 {
+        transform: scale(1.1);
+    }
+
+    .milestone-item:hover p {
+        transform: scale(1.05);
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+        0% {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
 </style>
+
 <body>
 
-    
+
     <section class="about">
         <div class="container">
             <div class="about-content">
@@ -93,13 +132,13 @@ body {
                 </p>
                 <p>
                     We are a global community of learners and leaders, and our mission is to make
-                    mentorship accessible to everyone. Whether you're looking to advance your career, 
-                    change industries, or develop new skills, our platform can help you find the right mentor 
+                    mentorship accessible to everyone. Whether you're looking to advance your career,
+                    change industries, or develop new skills, our platform can help you find the right mentor
                     to guide you on your journey.
                 </p>
             </div>
-            
-            
+
+
             <div class="milestones">
                 <div class="milestone-item">
                     <h3>500+</h3>
@@ -118,8 +157,9 @@ body {
                     <p>Countries Represented</p>
                 </div>
             </div>
-           
-    </section>
 
+    </section>
+    
 </body>
+
 </html>
