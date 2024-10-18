@@ -29,7 +29,8 @@
             border-radius: 8px;
             box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
             width: 300px;
-            box-shadow: 2px 2px 15px rgb(228, 196, 255);;
+            box-shadow: 2px 2px 15px rgb(228, 196, 255);
+            ;
         }
 
         label {
@@ -110,76 +111,82 @@
         </form>
     </div>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const form = document.querySelector("form");
-            const nameInput = document.getElementById("name");
-            const emailInput = document.getElementById("email");
-            const courseInput = document.getElementById("course");
-            const passwordInput = document.getElementById("password");
-            const checkbox = document.getElementById("allow");
+        document.addEventListener('DOMContentLoaded', () => {
 
-            form.addEventListener("submit", function (e) {
-                let isValid = true;
+            const form = document.querySelector('form');
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const courseInput = document.getElementById('course');
+            const passwordInput = document.getElementById('password');
+            const checkboxInput = document.getElementById('allow');
+
+            form.addEventListener('submit', function (event) {
+                // Clear previous errors
                 clearErrors();
 
-            
+                // Input validation
+                let isValid = true;
+
+                // Name validation
                 if (nameInput.value.trim() === "") {
                     showError(nameInput, "Name is required");
                     isValid = false;
                 }
 
-                
-                if (emailInput.value.trim() === "") {
-                    showError(emailInput, "Email is required");
-                    isValid = false;
-                } else if (!isValidEmail(emailInput.value)) {
-                    showError(emailInput, "Invalid email format");
+                // Email validation
+                if (!validateEmail(emailInput.value)) {
+                    showError(emailInput, "Please enter a valid email address");
                     isValid = false;
                 }
 
-        
+                // Course validation
                 if (courseInput.value.trim() === "") {
                     showError(courseInput, "Course is required");
                     isValid = false;
                 }
 
-            
-                if (passwordInput.value.trim() === "") {
-                    showError(passwordInput, "Password is required");
-                    isValid = false;
-                } else if (passwordInput.value.length < 6) {
-                    showError(passwordInput, "Password must be at least 6 characters long");
+                // Password validation
+                if (passwordInput.value.length < 6) {
+                    showError(passwordInput, "Password must be at least 6 characters");
                     isValid = false;
                 }
 
-            
-                if (!checkbox.checked) {
-                    showError(checkbox, "You must accept the terms and conditions");
+                // Terms and conditions validation
+                if (!checkboxInput.checked) {
+                    showError(checkboxInput, "You must agree to the terms and conditions");
                     isValid = false;
                 }
 
+                // If form is invalid, prevent submission
                 if (!isValid) {
-                    e.preventDefault();
+                    event.preventDefault();
                 }
             });
 
-            function showError(inputElement, message) {
-                const error = document.createElement("div");
-                error.className = "error";
-                error.innerText = message;
-                inputElement.parentElement.appendChild(error);
+            // Utility functions
+
+            // Function to show an error message
+            function showError(input, message) {
+                const error = document.createElement('div');
+                error.className = 'error';
+                error.textContent = message;
+                input.parentElement.appendChild(error);
             }
 
+            // Function to clear all previous error messages
             function clearErrors() {
-                const errors = document.querySelectorAll(".error");
+                const errors = document.querySelectorAll('.error');
                 errors.forEach(error => error.remove());
             }
 
-            function isValidEmail(email) {
-                const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                return regex.test(email);
+            // Email validation function
+            function validateEmail(email) {
+                const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+                return emailPattern.test(email);
             }
+
         });
+
     </script>
 </body>
 
