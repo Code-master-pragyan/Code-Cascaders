@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        form {
+            background-color: rgb(228, 196, 255);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            box-shadow: 2px 2px 15px rgb(228, 196, 255);;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <form action="post" method="post">
+            <div>
+                <label for="name">Enter your name:</label>
+                <input type="text" name="name" id="name" placeholder="Enter your name">
+            </div>
+
+            <div>
+                <label for="email">Enter your E-mail Address:</label>
+                <input type="email" name="email" id="email">
+            </div>
+
+            <div>
+                <label for="course">Enter your Course:</label>
+                <input type="course" name="course" id="course" placeholder="Enter the course">
+            </div>
+
+            <div>
+                <label for="password">password:</label>
+                <input type="password" name="password" id="password">
+            </div>
+            <div>
+                <input type="checkbox" name="allow" id="allow">
+                <label for="allow">Allow terms and conditions</label>
+            </div>
+            <div>
+                <input type="submit" name="submit" id="submit">
+            </div>
+
+        </form>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.querySelector("form");
+            const nameInput = document.getElementById("name");
+            const emailInput = document.getElementById("email");
+            const courseInput = document.getElementById("course");
+            const passwordInput = document.getElementById("password");
+            const checkbox = document.getElementById("allow");
+
+            form.addEventListener("submit", function (e) {
+                let isValid = true;
+                clearErrors();
+
+            
+                if (nameInput.value.trim() === "") {
+                    showError(nameInput, "Name is required");
+                    isValid = false;
+                }
+
+                
+                if (emailInput.value.trim() === "") {
+                    showError(emailInput, "Email is required");
+                    isValid = false;
+                } else if (!isValidEmail(emailInput.value)) {
+                    showError(emailInput, "Invalid email format");
+                    isValid = false;
+                }
+
+        
+                if (courseInput.value.trim() === "") {
+                    showError(courseInput, "Course is required");
+                    isValid = false;
+                }
+
+            
+                if (passwordInput.value.trim() === "") {
+                    showError(passwordInput, "Password is required");
+                    isValid = false;
+                } else if (passwordInput.value.length < 6) {
+                    showError(passwordInput, "Password must be at least 6 characters long");
+                    isValid = false;
+                }
+
+            
+                if (!checkbox.checked) {
+                    showError(checkbox, "You must accept the terms and conditions");
+                    isValid = false;
+                }
+
+                if (!isValid) {
+                    e.preventDefault();
+                }
+            });
+
+            function showError(inputElement, message) {
+                const error = document.createElement("div");
+                error.className = "error";
+                error.innerText = message;
+                inputElement.parentElement.appendChild(error);
+            }
+
+            function clearErrors() {
+                const errors = document.querySelectorAll(".error");
+                errors.forEach(error => error.remove());
+            }
+
+            function isValidEmail(email) {
+                const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return regex.test(email);
+            }
+        });
+    </script>
+</body>
+
+</html>
