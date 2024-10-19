@@ -10,141 +10,148 @@
 </head>
 <style>
     * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    line-height: 1.6;
-}
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        line-height: 1.6;
+    }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-}
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
 
-h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-}
+    h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+    }
 
-p {
-    text-align: center;
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-}
+    p {
+        text-align: center;
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+    }
 
-.contact-grid {
-    display: flex;
-    justify-content: space-between;
-    gap: 2rem;
-}
-
-.contact-form, .contact-info {
-    background-color: #fff;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    width: 48%;
-}
-
-.contact-form h3 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-}
-
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-.form-group label {
-    display: block;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-}
-
-.form-group input, .form-group textarea {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
-    outline: none;
-}
-
-.form-group input:focus, .form-group textarea:focus {
-    border-color: #ff6347;
-}
-
-textarea {
-    resize: none;
-}
-
-button {
-    background-color: #ff6347;
-    color: #fff;
-    padding: 0.75rem 1.5rem;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: 1rem;
-    font-weight: 500;
-    text-transform: uppercase;
-}
-
-button:hover {
-    background-color: #ff4500;
-}
-.contact-info h3 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-}
-
-.contact-info ul {
-    list-style-type: none;
-    margin-bottom: 2rem;
-}
-
-.contact-info ul li {
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-}
-
-.contact-info ul li strong {
-    font-weight: 500;
-}
-
-.map iframe {
-    width: 100%;
-    border: none;
-    border-radius: 8px;
-}
-
-@media (max-width: 768px) {
     .contact-grid {
-        flex-direction: column;
+        display: flex;
+        justify-content: space-between;
+        gap: 2rem;
     }
 
     .contact-form, .contact-info {
-        width: 100%;
+        background-color: #fff;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        width: 48%;
     }
-}
+
+    .contact-form h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+        display: block;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+    }
+
+    .form-group input, .form-group textarea {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 1rem;
+        outline: none;
+    }
+
+    .form-group input:focus, .form-group textarea:focus {
+        border-color: #ff6347;
+    }
+
+    textarea {
+        resize: none;
+    }
+
+    button {
+        background-color: #ff6347;
+        color: #fff;
+        padding: 0.75rem 1.5rem;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+        font-size: 1rem;
+        font-weight: 500;
+        text-transform: uppercase;
+    }
+
+    button:hover {
+        background-color: #ff4500;
+    }
+
+    .contact-info h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .contact-info ul {
+        list-style-type: none;
+        margin-bottom: 2rem;
+    }
+
+    .contact-info ul li {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .contact-info ul li strong {
+        font-weight: 500;
+    }
+
+    /* Animation */
+    .slide-up {
+        opacity: 0;
+        transform: translateY(100px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .scrolled {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+        .contact-grid {
+            flex-direction: column;
+        }
+
+        .contact-form, .contact-info {
+            width: 100%;
+        }
+    }
 
 </style>
 <body>
-    <section class="contact">
-        <div class="container">
+    <section class="contact slide-up">
+        <div class="container slide-up">
             <h2>Contact Us</h2>
             <p>If you have any questions, feel free to reach out to us. We're here to help!</p>
             
             <div class="contact-grid">
-                <div class="contact-form">
+                <div class="contact-form slide-up">
                     <h3>Send Us a Message</h3>
                     <form action="#">
                         <div class="form-group">
@@ -163,19 +170,50 @@ button:hover {
                     </form>
                 </div>
                 
-                <div class="contact-info">
+                <div class="contact-info slide-up">
                     <h3>Get in Touch</h3>
                     <p>You can also reach us via email or visit us at our office.</p>
                     <ul>
                         <li><strong>Email:</strong> support@mentorship.com</li>
                         <li><strong>Phone:</strong> +123 456 7890</li>
-                        <li><strong>Address:</strong> guawahati, panikaiti station, assam State</li>
+                        <li><strong>Address:</strong> Guwahati, Panikaiti Station, Assam State</li>
                     </ul>
-                    
                 </div>
             </div>
         </div>
     </section>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.slide-up');
+
+            function elementInView(el, percentageScroll = 100) {
+                const elementTop = el.getBoundingClientRect().top;
+                return (
+                    elementTop <= 
+                    (window.innerHeight || document.documentElement.clientHeight) * (percentageScroll / 100)
+                );
+            }
+
+            function displayScrollElement(el) {
+                el.classList.add('scrolled');
+            }
+
+            function handleScrollAnimation() {
+                elements.forEach(el => {
+                    if (elementInView(el, 100)) {
+                        displayScrollElement(el);
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', () => {
+                handleScrollAnimation();
+            });
+
+            // Initial check in case elements are already in view
+            handleScrollAnimation();
+        });
+    </script>
 </body>
 </html>
